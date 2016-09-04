@@ -1,0 +1,51 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #share {
+            position: fixed;
+            width: 100px;
+            height: 200px;
+            background-color: lightblue;
+            left:-100px;
+            top:100px;
+        }
+        #share span {
+            width: 20px;
+            height: 60px;
+            line-height: 20px;
+            text-align: center;
+            left:100px;
+            top:70px;
+            position: absolute;
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+<div id="share">
+    <span>分享到</span>
+</div>
+<script src="animate.js"></script>
+<script>
+    //鼠标放到分享(也属于盒子上面)上面，就显示我二维码，移开就消失
+    //找元素
+    var share = document.getElementById("share");
+    var span = share.children[0];
+    //给盒子注册事件-鼠标移入
+    share.onmouseover=function(){
+        animate(share,{"left":0})
+    }
+    //给盒子注册事件-鼠标移开
+    share.onmouseout=function(){
+        animate(share,{"left":-100})
+    }
+</script>
+</body>
+</html>

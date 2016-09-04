@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="飞吧" id="btn"/>
+<div id="box"></div>
+<script>
+    //点击按钮，设置盒子的匀速移动
+    var btn = document.getElementById("btn");
+    //给按钮注册点击事件
+    btn.onclick=function(){
+    //点击的时候，盒子匀速移动，设置定时器
+        var target = 800;
+        //找到盒子
+        var box = document.getElementById("box")
+        var timerId=setInterval(function(){
+            //current/target/step
+            var current = box.offsetLeft;
+            var step = 10;
+            current += step;
+            //设置box的距离
+            box.style.left = current +"px";
+            if(current === target){
+                clearInterval(timerId);
+            }
+        },30);
+
+    }
+</script>
+</body>
+</html>

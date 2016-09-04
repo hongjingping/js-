@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="top" id="topPart">
+    <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+<script src="common.js"></script>
+<script>
+    //获取页面滚动出去的距离，屏蔽浏览器的差异
+    function getScroll(){
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+        return{
+            scrollTop:scrollTop,
+            scrollLeft:scrollLeft
+        }
+    }
+//滚动事件
+  //找元素
+    var topPart = document.getElementById("topPart");
+    var navBar = document.getElementById("navBar");
+    var mainPart = document.getElementById("mainPart");
+    //得到头部的滚动距离以及导航的高度（滚动事件给window注册）
+    window.onscroll=function(){
+        //如果滚动的距离>topPart的高度，就将nav设置为固定定位
+        if(getScroll().scrollTop>=topPart.offsetHeight){
+            //设置navBar为固定定位
+            navBar.className="nav fixed";
+            //然后设置mainPart的paddingtop设置为nav的高度
+            mainPart.style.paddingTop=navBar.offsetHeight+"px";
+        }else{
+            //否则，nav 就正常显示
+            navBar.className="nav";
+            //设置
+            mainPart.style.paddingTop="0px";
+        }
+    }
+
+</script>
+</body>
+</html>

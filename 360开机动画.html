@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 322px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        : hidden;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <span id="closeButton"></span>
+    <div class="hd" id="headPart">
+        <img src="images/t.jpg" alt=""/>
+    </div>
+    <div class="bd" id="bottomPart">
+        <img src="images/b.jpg" alt=""/>
+    </div>
+</div>
+<script src="animate.js"></script>
+<script>
+    //点击关闭按钮，图片先向下移动，再向右移动
+    //找元素
+    var box = document.getElementById("box");
+    var closeButton = document.getElementById("closeButton");
+    var headPart = document.getElementById("headPart");
+    var bottomPart = document.getElementById("bottomPart");
+    //给关闭按钮注册点击事件
+    closeButton.onclick=function(){
+        //设置下一个盒子高度先变为0
+        animate(bottomPart,{"height":0},function(){
+            //然后设置大盒子的宽度为0
+            animate( box,{"width":0});
+        })
+    }
+</script>
+
+</body>
+</html>
